@@ -72,7 +72,7 @@ network_overrides: &network_overrides
   config:
     mainnet:
       address_prefix: "xch"
-      default_full_node_port: 8444
+      default_full_node_port: 8886
     testnet0:
       address_prefix: "txch"
     testnet1:
@@ -85,7 +85,7 @@ network_overrides: &network_overrides
       address_prefix: "txch"
     testnet7:
       address_prefix: "txch"
-      default_full_node_port: 58444
+      default_full_node_port: 58886
 
 selected_network: &selected_network "mainnet"
 ALERTS_URL: https://download.dogia.net/notify/mainnet_alert.txt
@@ -163,7 +163,7 @@ farmer:
   # The farmer will attempt to connect to this full node and harvester
   full_node_peer:
     host: *self_hostname
-    port: 8444
+    port: 8886
   harvester_peer:
     host: *self_hostname
     port: 8448
@@ -212,7 +212,7 @@ timelord:
       - 150000
   full_node_peer:
       host: *self_hostname
-      port: 8444
+      port: 8886
   # Maximum number of seconds allowed for a client to reconnect to the server.
   max_connection_time: 60
   # The ip and port where the TCP clients will connect.
@@ -247,7 +247,7 @@ timelord:
 
 full_node:
   # The full node server (if run) will run on this port
-  port: 8444
+  port: 8886
 
   # Run multiple nodes with different databases by changing the database_path
   database_path: db/blockchain_v1_CHALLENGE.sqlite
@@ -311,7 +311,7 @@ full_node:
       port: 8446
   introducer_peer:
       host: introducer.dogia.net  # Dogia AWS introducer IPv4/IPv6
-      port: 8444
+      port: 8886
   wallet_peer:
     host: *self_hostname
     port: 8449
@@ -377,7 +377,7 @@ wallet:
 
   full_node_peer:
     host: *self_hostname
-    port: 8444
+    port: 8886
 
   testing: False
   database_path: wallet/db/blockchain_wallet_v1_CHALLENGE_KEY.sqlite
@@ -395,7 +395,7 @@ wallet:
 
   introducer_peer:
     host: introducer.dogia.net # Dogia AWS introducer IPv4/IPv6
-    port: 8444
+    port: 8886
 
   ssl:
     private_crt:  "config/ssl/wallet/private_wallet.crt"

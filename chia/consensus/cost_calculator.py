@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from chia.consensus.condition_costs import ConditionCost
-from chia.types.blockchain_format.program import SerializedProgram
-from chia.types.condition_opcodes import ConditionOpcode
-from chia.types.name_puzzle_condition import NPC
-from chia.util.ints import uint64, uint16
-from chia.util.streamable import Streamable, streamable
+from dogia.consensus.condition_costs import ConditionCost
+from dogia.types.blockchain_format.program import SerializedProgram
+from dogia.types.condition_opcodes import ConditionOpcode
+from dogia.types.name_puzzle_condition import NPC
+from dogia.util.ints import uint64, uint16
+from dogia.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

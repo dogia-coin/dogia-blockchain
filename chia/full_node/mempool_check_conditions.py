@@ -3,22 +3,22 @@ import time
 from typing import Tuple, Dict, List, Optional, Set
 from clvm import SExp
 
-from chia.consensus.cost_calculator import NPCResult
-from chia.consensus.condition_costs import ConditionCost
-from chia.full_node.generator import create_generator_args, setup_generator_args
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.program import NIL
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_record import CoinRecord
-from chia.types.condition_with_args import ConditionWithArgs
-from chia.types.generator_types import BlockGenerator
-from chia.types.name_puzzle_condition import NPC
-from chia.util.clvm import int_from_bytes, int_to_bytes
-from chia.util.condition_tools import ConditionOpcode, conditions_by_opcode
-from chia.util.errors import Err, ValidationError
-from chia.util.ints import uint32, uint64, uint16
-from chia.wallet.puzzles.generator_loader import GENERATOR_FOR_SINGLE_COIN_MOD
-from chia.wallet.puzzles.rom_bootstrap_generator import get_generator
+from dogia.consensus.cost_calculator import NPCResult
+from dogia.consensus.condition_costs import ConditionCost
+from dogia.full_node.generator import create_generator_args, setup_generator_args
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.blockchain_format.program import NIL
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.coin_record import CoinRecord
+from dogia.types.condition_with_args import ConditionWithArgs
+from dogia.types.generator_types import BlockGenerator
+from dogia.types.name_puzzle_condition import NPC
+from dogia.util.clvm import int_from_bytes, int_to_bytes
+from dogia.util.condition_tools import ConditionOpcode, conditions_by_opcode
+from dogia.util.errors import Err, ValidationError
+from dogia.util.ints import uint32, uint64, uint16
+from dogia.wallet.puzzles.generator_loader import GENERATOR_FOR_SINGLE_COIN_MOD
+from dogia.wallet.puzzles.rom_bootstrap_generator import get_generator
 
 GENERATOR_MOD = get_generator()
 

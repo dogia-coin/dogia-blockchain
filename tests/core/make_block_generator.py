@@ -2,15 +2,15 @@ from typing import Dict
 
 import blspy
 
-from chia.full_node.bundle_tools import simple_solution_generator
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.program import Program
-from chia.types.coin_solution import CoinSolution
-from chia.types.condition_opcodes import ConditionOpcode
-from chia.types.generator_types import BlockGenerator
-from chia.types.spend_bundle import SpendBundle
-from chia.util.ints import uint64
-from chia.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import puzzle_for_pk, solution_for_conditions
+from dogia.full_node.bundle_tools import simple_solution_generator
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.blockchain_format.program import Program
+from dogia.types.coin_solution import CoinSolution
+from dogia.types.condition_opcodes import ConditionOpcode
+from dogia.types.generator_types import BlockGenerator
+from dogia.types.spend_bundle import SpendBundle
+from dogia.util.ints import uint64
+from dogia.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import puzzle_for_pk, solution_for_conditions
 
 GROUP_ORDER = 0x73EDA753299D7D483339D80809A1D80553BDA402FFFE5BFEFFFFFFFF00000001
 

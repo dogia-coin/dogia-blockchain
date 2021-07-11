@@ -3,17 +3,17 @@ import asyncio
 from blspy import G2Element
 from clvm_tools import binutils
 
-from chia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from chia.rpc.full_node_rpc_client import FullNodeRpcClient
-from chia.types.blockchain_format.program import Program
-from chia.types.coin_solution import CoinSolution
-from chia.types.condition_opcodes import ConditionOpcode
-from chia.types.spend_bundle import SpendBundle
-from chia.util.bech32m import decode_puzzle_hash
-from chia.util.condition_tools import parse_sexp_to_conditions
-from chia.util.config import load_config
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.ints import uint32, uint16
+from dogia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from dogia.rpc.full_node_rpc_client import FullNodeRpcClient
+from dogia.types.blockchain_format.program import Program
+from dogia.types.coin_solution import CoinSolution
+from dogia.types.condition_opcodes import ConditionOpcode
+from dogia.types.spend_bundle import SpendBundle
+from dogia.util.bech32m import decode_puzzle_hash
+from dogia.util.condition_tools import parse_sexp_to_conditions
+from dogia.util.config import load_config
+from dogia.util.default_root import DEFAULT_ROOT_PATH
+from dogia.util.ints import uint32, uint16
 
 
 def print_conditions(spend_bundle: SpendBundle):

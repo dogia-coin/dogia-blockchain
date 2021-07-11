@@ -1,16 +1,16 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from chia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from chia.types.full_block import FullBlock
-from chia.types.peer_info import TimestampedPeerInfo
-from chia.types.spend_bundle import SpendBundle
-from chia.types.unfinished_block import UnfinishedBlock
-from chia.types.weight_proof import WeightProof
-from chia.util.ints import uint8, uint32, uint64, uint128
-from chia.util.streamable import Streamable, streamable
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.blockchain_format.vdf import VDFInfo, VDFProof
+from dogia.types.end_of_slot_bundle import EndOfSubSlotBundle
+from dogia.types.full_block import FullBlock
+from dogia.types.peer_info import TimestampedPeerInfo
+from dogia.types.spend_bundle import SpendBundle
+from dogia.types.unfinished_block import UnfinishedBlock
+from dogia.types.weight_proof import WeightProof
+from dogia.util.ints import uint8, uint32, uint64, uint128
+from dogia.util.streamable import Streamable, streamable
 
 """
 Protocol between full nodes.

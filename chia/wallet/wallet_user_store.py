@@ -2,10 +2,10 @@ from typing import List, Optional
 
 import aiosqlite
 
-from chia.util.db_wrapper import DBWrapper
-from chia.util.ints import uint32
-from chia.wallet.util.wallet_types import WalletType
-from chia.wallet.wallet_info import WalletInfo
+from dogia.util.db_wrapper import DBWrapper
+from dogia.util.ints import uint32
+from dogia.wallet.util.wallet_types import WalletType
+from dogia.wallet.wallet_info import WalletInfo
 
 
 class WalletUserStore:
@@ -48,7 +48,7 @@ class WalletUserStore:
     async def init_wallet(self):
         all_wallets = await self.get_all_wallet_info_entries()
         if len(all_wallets) == 0:
-            await self.create_wallet("Chia Wallet", WalletType.STANDARD_WALLET, "")
+            await self.create_wallet("Dogia Wallet", WalletType.STANDARD_WALLET, "")
 
     async def _clear_database(self):
         cursor = await self.db_connection.execute("DELETE FROM users_wallets")

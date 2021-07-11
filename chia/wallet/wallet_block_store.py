@@ -3,16 +3,16 @@ from typing import Dict, List, Optional, Tuple
 
 import aiosqlite
 
-from chia.consensus.block_record import BlockRecord
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chia.types.coin_solution import CoinSolution
-from chia.types.header_block import HeaderBlock
-from chia.util.db_wrapper import DBWrapper
-from chia.util.ints import uint32, uint64
-from chia.util.lru_cache import LRUCache
-from chia.util.streamable import Streamable, streamable
-from chia.wallet.block_record import HeaderBlockRecord
+from dogia.consensus.block_record import BlockRecord
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from dogia.types.coin_solution import CoinSolution
+from dogia.types.header_block import HeaderBlock
+from dogia.util.db_wrapper import DBWrapper
+from dogia.util.ints import uint32, uint64
+from dogia.util.lru_cache import LRUCache
+from dogia.util.streamable import Streamable, streamable
+from dogia.wallet.block_record import HeaderBlockRecord
 
 
 @dataclass(frozen=True)

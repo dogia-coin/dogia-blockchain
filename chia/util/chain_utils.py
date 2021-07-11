@@ -1,9 +1,9 @@
 from typing import List
 
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.program import SerializedProgram
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.condition_tools import (
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.blockchain_format.program import SerializedProgram
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.util.condition_tools import (
     conditions_dict_for_solution,
     created_outputs_for_conditions_dict,
 )

@@ -3,9 +3,9 @@ from typing import List, Tuple, Dict, Optional
 
 import aiosqlite
 
-from chia.types.coin_solution import CoinSolution
-from chia.util.db_wrapper import DBWrapper
-from chia.util.ints import uint32
+from dogia.types.coin_solution import CoinSolution
+from dogia.util.db_wrapper import DBWrapper
+from dogia.util.ints import uint32
 
 log = logging.getLogger(__name__)
 

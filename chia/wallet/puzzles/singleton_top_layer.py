@@ -1,14 +1,14 @@
 from typing import List, Tuple
 
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.program import Program
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.condition_opcodes import ConditionOpcode
-from chia.types.coin_solution import CoinSolution
-from chia.wallet.puzzles.load_clvm import load_clvm
-from chia.wallet.lineage_proof import LineageProof
-from chia.util.ints import uint64
-from chia.util.hash import std_hash
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.blockchain_format.program import Program
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.condition_opcodes import ConditionOpcode
+from dogia.types.coin_solution import CoinSolution
+from dogia.wallet.puzzles.load_clvm import load_clvm
+from dogia.wallet.lineage_proof import LineageProof
+from dogia.util.ints import uint64
+from dogia.util.hash import std_hash
 
 SINGLETON_MOD = load_clvm("singleton_top_layer.clvm")
 SINGLETON_MOD_HASH = SINGLETON_MOD.get_tree_hash()

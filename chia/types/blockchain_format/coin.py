@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import Any, List
 
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.clvm import int_to_bytes
-from chia.util.hash import std_hash
-from chia.util.ints import uint64
-from chia.util.streamable import Streamable, streamable
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.util.clvm import int_to_bytes
+from dogia.util.hash import std_hash
+from dogia.util.ints import uint64
+from dogia.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

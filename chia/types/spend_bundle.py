@@ -3,10 +3,10 @@ from typing import List
 
 from blspy import AugSchemeMPL, G2Element
 
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.streamable import Streamable, streamable
-from chia.wallet.util.debug_spend_bundle import debug_spend_bundle
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.util.streamable import Streamable, streamable
+from dogia.wallet.util.debug_spend_bundle import debug_spend_bundle
 
 from .coin_solution import CoinSolution
 

@@ -7,36 +7,36 @@ from typing import Callable, Dict, List, Optional, Tuple
 
 from blspy import PrivateKey, G1Element
 
-from chia.cmds.init_funcs import check_keys
-from chia.consensus.block_rewards import calculate_base_farmer_reward
-from chia.pools.pool_wallet import PoolWallet
-from chia.pools.pool_wallet_info import create_pool_state, FARMING_TO_POOL, PoolWalletInfo, PoolState
-from chia.protocols.protocol_message_types import ProtocolMessageTypes
-from chia.server.outbound_message import NodeType, make_msg
-from chia.simulator.simulator_protocol import FarmNewBlockProtocol
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.ints import uint32, uint64
-from chia.util.keychain import bytes_to_mnemonic, generate_mnemonic
-from chia.util.path import path_from_root
-from chia.util.ws_message import WsRpcMessage, create_payload_dict
-from chia.wallet.cc_wallet.cc_wallet import CCWallet
-from chia.wallet.derive_keys import master_sk_to_singleton_owner_sk
-from chia.wallet.rl_wallet.rl_wallet import RLWallet
-from chia.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_pool_sk, master_sk_to_wallet_sk
-from chia.wallet.did_wallet.did_wallet import DIDWallet
-from chia.wallet.trade_record import TradeRecord
-from chia.wallet.transaction_record import TransactionRecord
-from chia.wallet.util.backup_utils import download_backup, get_backup_info, upload_backup
-from chia.wallet.util.trade_utils import trade_record_to_dict
-from chia.wallet.util.transaction_type import TransactionType
-from chia.wallet.util.wallet_types import WalletType
-from chia.wallet.wallet_info import WalletInfo
-from chia.wallet.wallet_node import WalletNode
-from chia.util.config import load_config
-from chia.consensus.coinbase import create_puzzlehash_for_pk
+from dogia.cmds.init_funcs import check_keys
+from dogia.consensus.block_rewards import calculate_base_farmer_reward
+from dogia.pools.pool_wallet import PoolWallet
+from dogia.pools.pool_wallet_info import create_pool_state, FARMING_TO_POOL, PoolWalletInfo, PoolState
+from dogia.protocols.protocol_message_types import ProtocolMessageTypes
+from dogia.server.outbound_message import NodeType, make_msg
+from dogia.simulator.simulator_protocol import FarmNewBlockProtocol
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
+from dogia.util.byte_types import hexstr_to_bytes
+from dogia.util.ints import uint32, uint64
+from dogia.util.keychain import bytes_to_mnemonic, generate_mnemonic
+from dogia.util.path import path_from_root
+from dogia.util.ws_message import WsRpcMessage, create_payload_dict
+from dogia.wallet.cc_wallet.cc_wallet import CCWallet
+from dogia.wallet.derive_keys import master_sk_to_singleton_owner_sk
+from dogia.wallet.rl_wallet.rl_wallet import RLWallet
+from dogia.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_pool_sk, master_sk_to_wallet_sk
+from dogia.wallet.did_wallet.did_wallet import DIDWallet
+from dogia.wallet.trade_record import TradeRecord
+from dogia.wallet.transaction_record import TransactionRecord
+from dogia.wallet.util.backup_utils import download_backup, get_backup_info, upload_backup
+from dogia.wallet.util.trade_utils import trade_record_to_dict
+from dogia.wallet.util.transaction_type import TransactionType
+from dogia.wallet.util.wallet_types import WalletType
+from dogia.wallet.wallet_info import WalletInfo
+from dogia.wallet.wallet_node import WalletNode
+from dogia.util.config import load_config
+from dogia.consensus.coinbase import create_puzzlehash_for_pk
 
 # Timeout for response from wallet/full node for sending a transaction
 TIMEOUT = 30
@@ -48,7 +48,7 @@ class WalletRpcApi:
     def __init__(self, wallet_node: WalletNode):
         assert wallet_node is not None
         self.service = wallet_node
-        self.service_name = "chia_wallet"
+        self.service_name = "dogia_wallet"
 
     def get_routes(self) -> Dict[str, Callable]:
         return {
@@ -129,7 +129,7 @@ class WalletRpcApi:
             data["wallet_id"] = args[1]
         if args[2] is not None:
             data["additional_data"] = args[2]
-        return [create_payload_dict("state_changed", data, "chia_wallet", "wallet_ui")]
+        return [create_payload_dict("state_changed", data, "dogia_wallet", "wallet_ui")]
 
     async def _stop_wallet(self):
         """
@@ -536,7 +536,7 @@ class WalletRpcApi:
             if request["mode"] == "new":
                 owner_puzzle_hash: bytes32 = await self.service.wallet_state_manager.main_wallet.get_puzzle_hash(True)
 
-                from chia.pools.pool_wallet_info import initial_pool_state_from_dict
+                from dogia.pools.pool_wallet_info import initial_pool_state_from_dict
 
                 async with self.service.wallet_state_manager.lock:
                     last_wallet: Optional[

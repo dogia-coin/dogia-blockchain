@@ -3,11 +3,11 @@ from typing import Optional
 
 from blspy import G2Element
 
-from chia.types.blockchain_format.proof_of_space import ProofOfSpace
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from chia.util.ints import uint8, uint64
-from chia.util.streamable import Streamable, streamable
+from dogia.types.blockchain_format.proof_of_space import ProofOfSpace
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.blockchain_format.vdf import VDFInfo, VDFProof
+from dogia.util.ints import uint8, uint64
+from dogia.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

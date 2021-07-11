@@ -1,14 +1,14 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from chia.consensus.coinbase import pool_parent_id, farmer_parent_id
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.mempool_inclusion_status import MempoolInclusionStatus
-from chia.types.spend_bundle import SpendBundle
-from chia.util.ints import uint8, uint32, uint64
-from chia.util.streamable import Streamable, streamable
-from chia.wallet.util.transaction_type import TransactionType
+from dogia.consensus.coinbase import pool_parent_id, farmer_parent_id
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.mempool_inclusion_status import MempoolInclusionStatus
+from dogia.types.spend_bundle import SpendBundle
+from dogia.util.ints import uint8, uint32, uint64
+from dogia.util.streamable import Streamable, streamable
+from dogia.wallet.util.transaction_type import TransactionType
 
 
 @dataclass(frozen=True)

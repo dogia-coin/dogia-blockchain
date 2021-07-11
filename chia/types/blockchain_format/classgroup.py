@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 
-from chia.consensus.constants import ConsensusConstants
-from chia.types.blockchain_format.sized_bytes import bytes100
-from chia.util.streamable import Streamable, streamable
+from dogia.consensus.constants import ConsensusConstants
+from dogia.types.blockchain_format.sized_bytes import bytes100
+from dogia.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

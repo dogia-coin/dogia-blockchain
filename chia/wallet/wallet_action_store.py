@@ -2,10 +2,10 @@ from typing import List, Optional
 
 import aiosqlite
 
-from chia.util.db_wrapper import DBWrapper
-from chia.util.ints import uint32
-from chia.wallet.util.wallet_types import WalletType
-from chia.wallet.wallet_action import WalletAction
+from dogia.util.db_wrapper import DBWrapper
+from dogia.util.ints import uint32
+from dogia.wallet.util.wallet_types import WalletType
+from dogia.wallet.wallet_action import WalletAction
 
 
 class WalletActionStore:

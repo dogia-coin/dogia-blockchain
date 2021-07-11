@@ -3,14 +3,14 @@ from typing import Dict, List, Optional, Tuple
 
 import aiosqlite
 
-from chia.consensus.block_record import BlockRecord
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chia.types.full_block import FullBlock
-from chia.types.weight_proof import SubEpochChallengeSegment, SubEpochSegments
-from chia.util.db_wrapper import DBWrapper
-from chia.util.ints import uint32
-from chia.util.lru_cache import LRUCache
+from dogia.consensus.block_record import BlockRecord
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from dogia.types.full_block import FullBlock
+from dogia.types.weight_proof import SubEpochChallengeSegment, SubEpochSegments
+from dogia.util.db_wrapper import DBWrapper
+from dogia.util.ints import uint32
+from dogia.util.lru_cache import LRUCache
 
 log = logging.getLogger(__name__)
 

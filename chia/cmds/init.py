@@ -16,12 +16,12 @@ def init_cmd(ctx: click.Context, create_certs: str):
 
     \b
     Follow these steps to create new certificates for a remote harvester:
-    - Make a copy of your Farming Machine CA directory: ~/.chia/[version]/config/ssl/ca
-    - Shut down all chia daemon processes with `chia stop all -d`
-    - Run `chia init -c [directory]` on your remote harvester,
+    - Make a copy of your Farming Machine CA directory: ~/.dogia/[version]/config/ssl/ca
+    - Shut down all dogia daemon processes with `dogia stop all -d`
+    - Run `dogia init -c [directory]` on your remote harvester,
       where [directory] is the the copy of your Farming Machine CA directory
-    - Get more details on remote harvester on Chia wiki:
-      https://github.com/Chia-Network/chia-blockchain/wiki/Farming-on-many-machines
+    - Get more details on remote harvester on Dogia wiki:
+      https://github.com/Dogia-Network/dogia-blockchain/wiki/Farming-on-many-machines
     """
     from pathlib import Path
     from .init_funcs import init
@@ -30,7 +30,7 @@ def init_cmd(ctx: click.Context, create_certs: str):
 
 
 if __name__ == "__main__":
-    from .init_funcs import chia_init
-    from chia.util.default_root import DEFAULT_ROOT_PATH
+    from .init_funcs import dogia_init
+    from dogia.util.default_root import DEFAULT_ROOT_PATH
 
-    chia_init(DEFAULT_ROOT_PATH)
+    dogia_init(DEFAULT_ROOT_PATH)

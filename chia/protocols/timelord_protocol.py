@@ -1,14 +1,14 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from chia.types.blockchain_format.foliage import Foliage
-from chia.types.blockchain_format.reward_chain_block import RewardChainBlock, RewardChainBlockUnfinished
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from chia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from chia.util.ints import uint8, uint32, uint64, uint128
-from chia.util.streamable import Streamable, streamable
+from dogia.types.blockchain_format.foliage import Foliage
+from dogia.types.blockchain_format.reward_chain_block import RewardChainBlock, RewardChainBlockUnfinished
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from dogia.types.blockchain_format.vdf import VDFInfo, VDFProof
+from dogia.types.end_of_slot_bundle import EndOfSubSlotBundle
+from dogia.util.ints import uint8, uint32, uint64, uint128
+from dogia.util.streamable import Streamable, streamable
 
 """
 Protocol between timelord and full node.

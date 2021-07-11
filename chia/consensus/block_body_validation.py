@@ -3,42 +3,42 @@ import logging
 from typing import Dict, List, Optional, Set, Tuple, Union, Callable
 
 from blspy import AugSchemeMPL, G1Element
-from chiabip158 import PyBIP158
+from dogiabip158 import PyBIP158
 from clvm.casts import int_from_bytes
 
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from chia.consensus.block_root_validation import validate_block_merkle_roots
-from chia.full_node.mempool_check_conditions import mempool_check_conditions_dict
-from chia.consensus.blockchain_interface import BlockchainInterface
-from chia.consensus.coinbase import create_farmer_coin, create_pool_coin
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.cost_calculator import NPCResult, calculate_cost_of_program
-from chia.consensus.find_fork_point import find_fork_point_in_chain
-from chia.full_node.block_store import BlockStore
-from chia.full_node.coin_store import CoinStore
-from chia.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_record import CoinRecord
-from chia.types.condition_opcodes import ConditionOpcode
-from chia.types.condition_with_args import ConditionWithArgs
-from chia.types.full_block import FullBlock
-from chia.types.generator_types import BlockGenerator
-from chia.types.name_puzzle_condition import NPC
-from chia.types.unfinished_block import UnfinishedBlock
-from chia.util.condition_tools import (
+from dogia.consensus.block_record import BlockRecord
+from dogia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from dogia.consensus.block_root_validation import validate_block_merkle_roots
+from dogia.full_node.mempool_check_conditions import mempool_check_conditions_dict
+from dogia.consensus.blockchain_interface import BlockchainInterface
+from dogia.consensus.coinbase import create_farmer_coin, create_pool_coin
+from dogia.consensus.constants import ConsensusConstants
+from dogia.consensus.cost_calculator import NPCResult, calculate_cost_of_program
+from dogia.consensus.find_fork_point import find_fork_point_in_chain
+from dogia.full_node.block_store import BlockStore
+from dogia.full_node.coin_store import CoinStore
+from dogia.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.coin_record import CoinRecord
+from dogia.types.condition_opcodes import ConditionOpcode
+from dogia.types.condition_with_args import ConditionWithArgs
+from dogia.types.full_block import FullBlock
+from dogia.types.generator_types import BlockGenerator
+from dogia.types.name_puzzle_condition import NPC
+from dogia.types.unfinished_block import UnfinishedBlock
+from dogia.util.condition_tools import (
     pkm_pairs_for_conditions_dict,
     coin_announcements_names_for_npc,
     puzzle_announcements_names_for_npc,
 )
-from chia.util.errors import Err
-from chia.util.generator_tools import (
+from dogia.util.errors import Err
+from dogia.util.generator_tools import (
     additions_for_npc,
     tx_removals_and_additions,
 )
-from chia.util.hash import std_hash
-from chia.util.ints import uint32, uint64, uint128
+from dogia.util.hash import std_hash
+from dogia.util.ints import uint32, uint64, uint128
 
 log = logging.getLogger(__name__)
 

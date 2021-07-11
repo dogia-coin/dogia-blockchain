@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.spend_bundle import SpendBundle
-from chia.util.ints import uint8, uint32, uint64
-from chia.util.streamable import Streamable, streamable
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.spend_bundle import SpendBundle
+from dogia.util.ints import uint8, uint32, uint64
+from dogia.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

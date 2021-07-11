@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.ints import uint32
-from chia.wallet.util.wallet_types import WalletType
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.util.ints import uint32
+from dogia.wallet.util.wallet_types import WalletType
 
 
 @dataclass(frozen=True)

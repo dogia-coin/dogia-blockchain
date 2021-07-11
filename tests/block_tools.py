@@ -12,74 +12,74 @@ from pathlib import Path
 from typing import Callable, Dict, List, Optional, Tuple, Any
 
 from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
-from chiabip158 import PyBIP158
+from dogiabip158 import PyBIP158
 
-from chia.cmds.init_funcs import create_all_ssl, create_default_chia_config
-from chia.full_node.bundle_tools import (
+from dogia.cmds.init_funcs import create_all_ssl, create_default_dogia_config
+from dogia.full_node.bundle_tools import (
     best_solution_generator_from_template,
     detect_potential_template_generator,
     simple_solution_generator,
 )
-from chia.util.errors import Err
-from chia.full_node.generator import setup_generator_args
-from chia.full_node.mempool_check_conditions import GENERATOR_MOD
-from chia.plotting.create_plots import create_plots
-from chia.consensus.block_creation import unfinished_block_to_full_block
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from chia.consensus.blockchain_interface import BlockchainInterface
-from chia.consensus.coinbase import create_puzzlehash_for_pk, create_farmer_coin, create_pool_coin
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.default_constants import DEFAULT_CONSTANTS
-from chia.consensus.deficit import calculate_deficit
-from chia.consensus.full_block_to_block_record import block_to_block_record
-from chia.consensus.make_sub_epoch_summary import next_sub_epoch_summary
-from chia.consensus.cost_calculator import NPCResult, calculate_cost_of_program
-from chia.consensus.pot_iterations import (
+from dogia.util.errors import Err
+from dogia.full_node.generator import setup_generator_args
+from dogia.full_node.mempool_check_conditions import GENERATOR_MOD
+from dogia.plotting.create_plots import create_plots
+from dogia.consensus.block_creation import unfinished_block_to_full_block
+from dogia.consensus.block_record import BlockRecord
+from dogia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from dogia.consensus.blockchain_interface import BlockchainInterface
+from dogia.consensus.coinbase import create_puzzlehash_for_pk, create_farmer_coin, create_pool_coin
+from dogia.consensus.constants import ConsensusConstants
+from dogia.consensus.default_constants import DEFAULT_CONSTANTS
+from dogia.consensus.deficit import calculate_deficit
+from dogia.consensus.full_block_to_block_record import block_to_block_record
+from dogia.consensus.make_sub_epoch_summary import next_sub_epoch_summary
+from dogia.consensus.cost_calculator import NPCResult, calculate_cost_of_program
+from dogia.consensus.pot_iterations import (
     calculate_ip_iters,
     calculate_iterations_quality,
     calculate_sp_interval_iters,
     calculate_sp_iters,
     is_overflow_block,
 )
-from chia.consensus.vdf_info_computation import get_signage_point_vdf_info
-from chia.full_node.signage_point import SignagePoint
-from chia.plotting.plot_tools import PlotInfo, load_plots, parse_plot_info
-from chia.types.blockchain_format.classgroup import ClassgroupElement
-from chia.types.blockchain_format.coin import Coin, hash_coin_list
-from chia.types.blockchain_format.foliage import Foliage, FoliageBlockData, FoliageTransactionBlock, TransactionsInfo
-from chia.types.blockchain_format.pool_target import PoolTarget
-from chia.types.blockchain_format.proof_of_space import ProofOfSpace
-from chia.types.blockchain_format.reward_chain_block import RewardChainBlockUnfinished
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.slots import (
+from dogia.consensus.vdf_info_computation import get_signage_point_vdf_info
+from dogia.full_node.signage_point import SignagePoint
+from dogia.plotting.plot_tools import PlotInfo, load_plots, parse_plot_info
+from dogia.types.blockchain_format.classgroup import ClassgroupElement
+from dogia.types.blockchain_format.coin import Coin, hash_coin_list
+from dogia.types.blockchain_format.foliage import Foliage, FoliageBlockData, FoliageTransactionBlock, TransactionsInfo
+from dogia.types.blockchain_format.pool_target import PoolTarget
+from dogia.types.blockchain_format.proof_of_space import ProofOfSpace
+from dogia.types.blockchain_format.reward_chain_block import RewardChainBlockUnfinished
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.blockchain_format.slots import (
     ChallengeChainSubSlot,
     InfusedChallengeChainSubSlot,
     RewardChainSubSlot,
     SubSlotProofs,
 )
-from chia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from chia.types.condition_with_args import ConditionWithArgs
-from chia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from chia.types.full_block import FullBlock
-from chia.types.generator_types import BlockGenerator, CompressorArg
-from chia.types.spend_bundle import SpendBundle
-from chia.types.unfinished_block import UnfinishedBlock
-from chia.types.name_puzzle_condition import NPC
-from chia.util.bech32m import encode_puzzle_hash
-from chia.util.block_cache import BlockCache
-from chia.util.condition_tools import ConditionOpcode, conditions_by_opcode
-from chia.util.config import load_config, save_config
-from chia.util.hash import std_hash
-from chia.util.ints import uint8, uint16, uint32, uint64, uint128
-from chia.util.keychain import Keychain, bytes_to_mnemonic
-from chia.util.merkle_set import MerkleSet
-from chia.util.prev_transaction_block import get_prev_transaction_block
-from chia.util.path import mkdir
-from chia.util.vdf_prover import get_vdf_info_and_proof
+from dogia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from dogia.types.blockchain_format.vdf import VDFInfo, VDFProof
+from dogia.types.condition_with_args import ConditionWithArgs
+from dogia.types.end_of_slot_bundle import EndOfSubSlotBundle
+from dogia.types.full_block import FullBlock
+from dogia.types.generator_types import BlockGenerator, CompressorArg
+from dogia.types.spend_bundle import SpendBundle
+from dogia.types.unfinished_block import UnfinishedBlock
+from dogia.types.name_puzzle_condition import NPC
+from dogia.util.bech32m import encode_puzzle_hash
+from dogia.util.block_cache import BlockCache
+from dogia.util.condition_tools import ConditionOpcode, conditions_by_opcode
+from dogia.util.config import load_config, save_config
+from dogia.util.hash import std_hash
+from dogia.util.ints import uint8, uint16, uint32, uint64, uint128
+from dogia.util.keychain import Keychain, bytes_to_mnemonic
+from dogia.util.merkle_set import MerkleSet
+from dogia.util.prev_transaction_block import get_prev_transaction_block
+from dogia.util.path import mkdir
+from dogia.util.vdf_prover import get_vdf_info_and_proof
 from tests.wallet_tools import WalletTool
-from chia.wallet.derive_keys import (
+from dogia.wallet.derive_keys import (
     master_sk_to_farmer_sk,
     master_sk_to_local_sk,
     master_sk_to_pool_sk,
@@ -131,7 +131,7 @@ class BlockTools:
             root_path = Path(self._tempdir.name)
 
         self.root_path = root_path
-        create_default_chia_config(root_path)
+        create_default_dogia_config(root_path)
         self.keychain = Keychain("testing-1.8.0", True)
         self.keychain.delete_all_keys()
         self.farmer_master_sk_entropy = std_hash(b"block_tools farmer key")
@@ -155,7 +155,7 @@ class BlockTools:
 
         self.farmer_pubkeys: List[G1Element] = [master_sk_to_farmer_sk(sk).get_g1() for sk in self.all_sks]
         if len(self.pool_pubkeys) == 0 or len(self.farmer_pubkeys) == 0:
-            raise RuntimeError("Keys not generated. Run `chia generate keys`")
+            raise RuntimeError("Keys not generated. Run `dogia generate keys`")
 
         self.load_plots()
         self.local_sk_cache: Dict[bytes32, Tuple[PrivateKey, Any]] = {}
@@ -1219,7 +1219,7 @@ def get_challenges(
 
 
 def get_plot_dir() -> Path:
-    cache_path = Path(os.path.expanduser(os.getenv("CHIA_ROOT", "~/.chia/"))) / "test-plots"
+    cache_path = Path(os.path.expanduser(os.getenv("DOGIA_ROOT", "~/.dogia/"))) / "test-plots"
     mkdir(cache_path)
     return cache_path
 

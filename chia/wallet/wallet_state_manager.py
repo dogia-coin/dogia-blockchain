@@ -9,58 +9,58 @@ from typing import Any, Callable, Dict, List, Optional, Set, Tuple
 
 import aiosqlite
 from blspy import AugSchemeMPL, G1Element, PrivateKey
-from chiabip158 import PyBIP158
+from dogiabip158 import PyBIP158
 from cryptography.fernet import Fernet
 
-from chia import __version__
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.coinbase import pool_parent_id, farmer_parent_id
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.find_fork_point import find_fork_point_in_chain
-from chia.full_node.weight_proof import WeightProofHandler
-from chia.pools.pool_puzzles import SINGLETON_LAUNCHER_HASH, solution_to_extra_data
-from chia.pools.pool_wallet import PoolWallet
-from chia.protocols.wallet_protocol import PuzzleSolutionResponse, RespondPuzzleSolution
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.program import Program
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_solution import CoinSolution
-from chia.types.full_block import FullBlock
-from chia.types.header_block import HeaderBlock
-from chia.types.mempool_inclusion_status import MempoolInclusionStatus
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.db_wrapper import DBWrapper
-from chia.util.errors import Err
-from chia.util.hash import std_hash
-from chia.util.ints import uint32, uint64, uint128
-from chia.wallet.block_record import HeaderBlockRecord
-from chia.wallet.cc_wallet.cc_wallet import CCWallet
-from chia.wallet.derivation_record import DerivationRecord
-from chia.wallet.derive_keys import master_sk_to_backup_sk, master_sk_to_wallet_sk
-from chia.wallet.key_val_store import KeyValStore
-from chia.wallet.rl_wallet.rl_wallet import RLWallet
-from chia.wallet.settings.user_settings import UserSettings
-from chia.wallet.trade_manager import TradeManager
-from chia.wallet.transaction_record import TransactionRecord
-from chia.wallet.util.backup_utils import open_backup_file
-from chia.wallet.util.transaction_type import TransactionType
-from chia.wallet.util.wallet_types import WalletType
-from chia.wallet.wallet import Wallet
-from chia.wallet.wallet_action import WalletAction
-from chia.wallet.wallet_action_store import WalletActionStore
-from chia.wallet.wallet_block_store import WalletBlockStore
-from chia.wallet.wallet_blockchain import WalletBlockchain
-from chia.wallet.wallet_coin_record import WalletCoinRecord
-from chia.wallet.wallet_coin_store import WalletCoinStore
-from chia.wallet.wallet_info import WalletInfo, WalletInfoBackup
-from chia.wallet.wallet_interested_store import WalletInterestedStore
-from chia.wallet.wallet_pool_store import WalletPoolStore
-from chia.wallet.wallet_puzzle_store import WalletPuzzleStore
-from chia.wallet.wallet_sync_store import WalletSyncStore
-from chia.wallet.wallet_transaction_store import WalletTransactionStore
-from chia.wallet.wallet_user_store import WalletUserStore
-from chia.server.server import ChiaServer
-from chia.wallet.did_wallet.did_wallet import DIDWallet
+from dogia import __version__
+from dogia.consensus.block_record import BlockRecord
+from dogia.consensus.coinbase import pool_parent_id, farmer_parent_id
+from dogia.consensus.constants import ConsensusConstants
+from dogia.consensus.find_fork_point import find_fork_point_in_chain
+from dogia.full_node.weight_proof import WeightProofHandler
+from dogia.pools.pool_puzzles import SINGLETON_LAUNCHER_HASH, solution_to_extra_data
+from dogia.pools.pool_wallet import PoolWallet
+from dogia.protocols.wallet_protocol import PuzzleSolutionResponse, RespondPuzzleSolution
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.blockchain_format.program import Program
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.coin_solution import CoinSolution
+from dogia.types.full_block import FullBlock
+from dogia.types.header_block import HeaderBlock
+from dogia.types.mempool_inclusion_status import MempoolInclusionStatus
+from dogia.util.byte_types import hexstr_to_bytes
+from dogia.util.db_wrapper import DBWrapper
+from dogia.util.errors import Err
+from dogia.util.hash import std_hash
+from dogia.util.ints import uint32, uint64, uint128
+from dogia.wallet.block_record import HeaderBlockRecord
+from dogia.wallet.cc_wallet.cc_wallet import CCWallet
+from dogia.wallet.derivation_record import DerivationRecord
+from dogia.wallet.derive_keys import master_sk_to_backup_sk, master_sk_to_wallet_sk
+from dogia.wallet.key_val_store import KeyValStore
+from dogia.wallet.rl_wallet.rl_wallet import RLWallet
+from dogia.wallet.settings.user_settings import UserSettings
+from dogia.wallet.trade_manager import TradeManager
+from dogia.wallet.transaction_record import TransactionRecord
+from dogia.wallet.util.backup_utils import open_backup_file
+from dogia.wallet.util.transaction_type import TransactionType
+from dogia.wallet.util.wallet_types import WalletType
+from dogia.wallet.wallet import Wallet
+from dogia.wallet.wallet_action import WalletAction
+from dogia.wallet.wallet_action_store import WalletActionStore
+from dogia.wallet.wallet_block_store import WalletBlockStore
+from dogia.wallet.wallet_blockchain import WalletBlockchain
+from dogia.wallet.wallet_coin_record import WalletCoinRecord
+from dogia.wallet.wallet_coin_store import WalletCoinStore
+from dogia.wallet.wallet_info import WalletInfo, WalletInfoBackup
+from dogia.wallet.wallet_interested_store import WalletInterestedStore
+from dogia.wallet.wallet_pool_store import WalletPoolStore
+from dogia.wallet.wallet_puzzle_store import WalletPuzzleStore
+from dogia.wallet.wallet_sync_store import WalletSyncStore
+from dogia.wallet.wallet_transaction_store import WalletTransactionStore
+from dogia.wallet.wallet_user_store import WalletUserStore
+from dogia.server.server import DogiaServer
+from dogia.wallet.did_wallet.did_wallet import DIDWallet
 
 
 class WalletStateManager:
@@ -107,7 +107,7 @@ class WalletStateManager:
     interested_store: WalletInterestedStore
     pool_store: WalletPoolStore
     weight_proof_handler: Any
-    server: ChiaServer
+    server: DogiaServer
     root_path: Path
 
     @staticmethod
@@ -116,7 +116,7 @@ class WalletStateManager:
         config: Dict,
         db_path: Path,
         constants: ConsensusConstants,
-        server: ChiaServer,
+        server: DogiaServer,
         root_path: Path,
         name: str = None,
     ):

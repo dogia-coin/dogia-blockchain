@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import List
 
-from chia.types.blockchain_format.coin import Coin
-from chia.types.header_block import HeaderBlock
-from chia.util.streamable import Streamable, streamable
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.header_block import HeaderBlock
+from dogia.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

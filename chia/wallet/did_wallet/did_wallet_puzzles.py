@@ -1,13 +1,13 @@
 from clvm_tools import binutils
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.program import Program
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.blockchain_format.program import Program
 from typing import List, Optional, Tuple
 from blspy import G1Element
-from chia.types.blockchain_format.coin import Coin
-from chia.types.coin_solution import CoinSolution
-from chia.util.ints import uint64
-from chia.wallet.puzzles.load_clvm import load_clvm
-from chia.types.condition_opcodes import ConditionOpcode
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.coin_solution import CoinSolution
+from dogia.util.ints import uint64
+from dogia.wallet.puzzles.load_clvm import load_clvm
+from dogia.types.condition_opcodes import ConditionOpcode
 
 
 SINGLETON_TOP_LAYER_MOD = load_clvm("singleton_top_layer.clvm")

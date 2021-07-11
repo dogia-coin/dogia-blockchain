@@ -1,14 +1,14 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.pot_iterations import calculate_ip_iters, calculate_sp_iters
-from chia.types.blockchain_format.classgroup import ClassgroupElement
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chia.util.ints import uint8, uint32, uint64, uint128
-from chia.util.streamable import Streamable, streamable
+from dogia.consensus.constants import ConsensusConstants
+from dogia.consensus.pot_iterations import calculate_ip_iters, calculate_sp_iters
+from dogia.types.blockchain_format.classgroup import ClassgroupElement
+from dogia.types.blockchain_format.coin import Coin
+from dogia.types.blockchain_format.sized_bytes import bytes32
+from dogia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from dogia.util.ints import uint8, uint32, uint64, uint128
+from dogia.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

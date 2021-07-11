@@ -2,17 +2,17 @@ from typing import Any, Dict, List, Optional
 
 import aiohttp
 
-from chia.cmds.units import units
-from chia.consensus.block_record import BlockRecord
-from chia.rpc.farmer_rpc_client import FarmerRpcClient
-from chia.rpc.full_node_rpc_client import FullNodeRpcClient
-from chia.rpc.wallet_rpc_client import WalletRpcClient
-from chia.util.config import load_config
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.ints import uint16
-from chia.util.misc import format_bytes
-from chia.util.misc import format_minutes
-from chia.util.network import is_localhost
+from dogia.cmds.units import units
+from dogia.consensus.block_record import BlockRecord
+from dogia.rpc.farmer_rpc_client import FarmerRpcClient
+from dogia.rpc.full_node_rpc_client import FullNodeRpcClient
+from dogia.rpc.wallet_rpc_client import WalletRpcClient
+from dogia.util.config import load_config
+from dogia.util.default_root import DEFAULT_ROOT_PATH
+from dogia.util.ints import uint16
+from dogia.util.misc import format_bytes
+from dogia.util.misc import format_minutes
+from dogia.util.network import is_localhost
 
 SECONDS_PER_BLOCK = (24 * 3600) / 4608
 
@@ -207,9 +207,9 @@ async def summary(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port: int, 
         print("Farming")
 
     if amounts is not None:
-        print(f"Total chia farmed: {amounts['farmed_amount'] / units['chia']}")
-        print(f"User transaction fees: {amounts['fee_amount'] / units['chia']}")
-        print(f"Block rewards: {(amounts['farmer_reward_amount'] + amounts['pool_reward_amount']) / units['chia']}")
+        print(f"Total dogia farmed: {amounts['farmed_amount'] / units['dogia']}")
+        print(f"User transaction fees: {amounts['fee_amount'] / units['dogia']}")
+        print(f"Block rewards: {(amounts['farmer_reward_amount'] + amounts['pool_reward_amount']) / units['dogia']}")
         print(f"Last height farmed: {amounts['last_height_farmed']}")
 
     class PlotStats:
@@ -268,8 +268,8 @@ async def summary(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port: int, 
 
     if amounts is None:
         if wallet_not_running:
-            print("For details on farmed rewards and fees you should run 'chia start wallet' and 'chia wallet show'")
+            print("For details on farmed rewards and fees you should run 'dogia start wallet' and 'dogia wallet show'")
         elif wallet_not_ready:
-            print("For details on farmed rewards and fees you should run 'chia wallet show'")
+            print("For details on farmed rewards and fees you should run 'dogia wallet show'")
     else:
-        print("Note: log into your key using 'chia wallet show' to see rewards for each key")
+        print("Note: log into your key using 'dogia wallet show' to see rewards for each key")

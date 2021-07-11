@@ -4,13 +4,13 @@ from typing import Optional
 
 import pytest
 
-from chia.consensus.block_record import BlockRecord
-from chia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from chia.full_node.full_node_api import FullNodeAPI
-from chia.protocols import full_node_protocol
-from chia.simulator.simulator_protocol import FarmNewBlockProtocol
-from chia.types.peer_info import PeerInfo
-from chia.util.ints import uint16, uint32
+from dogia.consensus.block_record import BlockRecord
+from dogia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from dogia.full_node.full_node_api import FullNodeAPI
+from dogia.protocols import full_node_protocol
+from dogia.simulator.simulator_protocol import FarmNewBlockProtocol
+from dogia.types.peer_info import PeerInfo
+from dogia.util.ints import uint16, uint32
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
 

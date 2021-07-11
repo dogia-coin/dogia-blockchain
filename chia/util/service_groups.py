@@ -1,19 +1,19 @@
 from typing import KeysView, Generator
 
 SERVICES_FOR_GROUP = {
-    "all": "chia_harvester chia_timelord_launcher chia_timelord chia_farmer chia_full_node chia_wallet".split(),
-    "node": "chia_full_node".split(),
-    "harvester": "chia_harvester".split(),
-    "farmer": "chia_harvester chia_farmer chia_full_node chia_wallet".split(),
-    "farmer-no-wallet": "chia_harvester chia_farmer chia_full_node".split(),
-    "farmer-only": "chia_farmer".split(),
-    "timelord": "chia_timelord_launcher chia_timelord chia_full_node".split(),
-    "timelord-only": "chia_timelord".split(),
-    "timelord-launcher-only": "chia_timelord_launcher".split(),
-    "wallet": "chia_wallet chia_full_node".split(),
-    "wallet-only": "chia_wallet".split(),
-    "introducer": "chia_introducer".split(),
-    "simulator": "chia_full_node_simulator".split(),
+    "all": "dogia_harvester dogia_timelord_launcher dogia_timelord dogia_farmer dogia_full_node dogia_wallet".split(),
+    "node": "dogia_full_node".split(),
+    "harvester": "dogia_harvester".split(),
+    "farmer": "dogia_harvester dogia_farmer dogia_full_node dogia_wallet".split(),
+    "farmer-no-wallet": "dogia_harvester dogia_farmer dogia_full_node".split(),
+    "farmer-only": "dogia_farmer".split(),
+    "timelord": "dogia_timelord_launcher dogia_timelord dogia_full_node".split(),
+    "timelord-only": "dogia_timelord".split(),
+    "timelord-launcher-only": "dogia_timelord_launcher".split(),
+    "wallet": "dogia_wallet dogia_full_node".split(),
+    "wallet-only": "dogia_wallet".split(),
+    "introducer": "dogia_introducer".split(),
+    "simulator": "dogia_full_node_simulator".split(),
 }
 
 

@@ -2,9 +2,9 @@ from dataclasses import dataclass
 from enum import IntEnum
 from typing import Any, Optional
 
-from chia.protocols.protocol_message_types import ProtocolMessageTypes
-from chia.util.ints import uint8, uint16
-from chia.util.streamable import Streamable, streamable
+from dogia.protocols.protocol_message_types import ProtocolMessageTypes
+from dogia.util.ints import uint8, uint16
+from dogia.util.streamable import Streamable, streamable
 
 
 class NodeType(IntEnum):

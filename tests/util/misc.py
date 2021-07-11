@@ -1,6 +1,6 @@
 import pytest
-from chia.util.misc import format_bytes
-from chia.util.misc import format_minutes
+from dogia.util.misc import format_bytes
+from dogia.util.misc import format_minutes
 
 
 class TestMisc:

@@ -1,6 +1,6 @@
 import pytest
 
-from chia.wallet.chialisp import (
+from dogia.wallet.dogialisp import (
     apply,
     args,
     cons,
@@ -17,7 +17,7 @@ from chia.wallet.chialisp import (
 )
 
 
-class TestChialisp:
+class TestDogialisp:
     def test_sexp(self):
         assert sexp() == "()"
         assert sexp(1) == "(1)"
